@@ -6,7 +6,7 @@ const TaskPage = async () => {
   });
   const tasks = await response.json();
 
-  // console.log("tasks:", tasks);
+  console.log("tasks:", tasks);
 
   return <div>TaskPage</div>;
 };

@@ -23,7 +23,6 @@ import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { SignInButton, useUser } from "@clerk/nextjs";
-import { currentUser } from "@clerk/nextjs/server";
 import { format } from "date-fns";
 import {
   CalendarIcon,
