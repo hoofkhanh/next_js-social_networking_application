@@ -45,6 +45,7 @@ interface ProfilePageClientProps {
   posts: Posts;
   likedPosts: Posts;
   isFollowing: boolean;
+  dbUserId: string | null;
 }
 
 const ProfilePageClient = ({
@@ -52,6 +53,7 @@ const ProfilePageClient = ({
   likedPosts,
   posts,
   user,
+  dbUserId,
 }: ProfilePageClientProps) => {
   if (!user) notFound();
 
@@ -229,7 +231,7 @@ const ProfilePageClient = ({
             <div className="space-y-6">
               {posts.length > 0 ? (
                 posts.map((post) => (
-                  <PostCard key={post.id} post={post} dbUserId={user.id} />
+                  <PostCard key={post.id} post={post} dbUserId={dbUserId} />
                 ))
               ) : (
                 <div className="text-center py-8 text-muted-foreground">
@@ -243,7 +245,7 @@ const ProfilePageClient = ({
             <div className="space-y-6">
               {likedPosts.length > 0 ? (
                 likedPosts.map((post) => (
-                  <PostCard key={post.id} post={post} dbUserId={user.id} />
+                  <PostCard key={post.id} post={post} dbUserId={dbUserId} />
                 ))
               ) : (
                 <div className="text-center py-8 text-muted-foreground">
