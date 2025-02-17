@@ -56,6 +56,7 @@ const PostCard = ({
       setOptimisticLike((prev) => prev + (hasLike ? -1 : 1));
       await toggleLike(post.id);
     } catch (error) {
+      console.log(error);
       setOptimisticLike(post._count.likes);
       setHasLike(post.likes.some((like) => like.userId === dbUserId));
     } finally {
@@ -75,7 +76,7 @@ const PostCard = ({
         toast.error("Failed to add comment");
       }
     } catch (error) {
-      toast.error("Failed to add comment");
+      toast.error("Failed to add comment: " + error);
     } finally {
       setIsCommenting(false);
     }
@@ -89,7 +90,7 @@ const PostCard = ({
       if (result?.success) toast.success("Post deleted successfully");
       else throw new Error(result?.error || "Failed to delete post");
     } catch (error) {
-      toast.error("Failed to delete post");
+      toast.error("Failed to delete post: " + error);
     } finally {
       setIsDeleting(false);
     }

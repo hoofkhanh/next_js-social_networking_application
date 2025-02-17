@@ -34,7 +34,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { use, useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 
 type User = Awaited<ReturnType<typeof getProfileByUsername>>;
@@ -88,7 +88,7 @@ const ProfilePageClient = ({
       await toggleFollow(user.id);
       setIsFollowing(!isFollowing);
     } catch (error) {
-      toast.error("Failed to update follow status");
+      toast.error("Failed to update follow status: " + error);
     } finally {
       setIsUpdatingFollow(false);
     }
